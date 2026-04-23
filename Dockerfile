@@ -34,7 +34,6 @@ RUN apt-get update && \
     expect \
     curl \
     wget \
-    sudo \
     fuse \
     qtdeclarative5-dev \
     qtbase5-dev \
@@ -43,10 +42,6 @@ RUN apt-get update && \
 
 # Create a new user and set their home directory
 RUN useradd -m -s /bin/bash fex
-
-RUN usermod -aG sudo fex
-
-RUN echo "fex ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/fex
 
 USER fex
 
@@ -62,12 +57,12 @@ RUN git clone --recurse-submodules https://github.com/timk1299/FEX.git --branch 
 
 WORKDIR /home/fex/FEX/Build
 
-RUN sudo ninja install && \
-    sudo ninja binfmt_misc
-
-RUN sudo useradd -m -s /bin/bash steam
-
 USER root
+
+RUN ninja install && \
+    ninja binfmt_misc
+
+RUN useradd -m -s /bin/bash steam
 
 RUN echo 'root:steamcmd' | chpasswd
 
