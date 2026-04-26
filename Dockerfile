@@ -1,5 +1,5 @@
-# Use the official Ubuntu 22.04 as the base image
-FROM ubuntu:24.04
+# Use the official Ubuntu 26.04 as the base image
+FROM ubuntu:26.04
 
 # Set environment variables to avoid interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
@@ -72,15 +72,15 @@ WORKDIR /home/steam/.fex-emu/RootFS/
 
 # Set up rootfs
 
-RUN wget -O Ubuntu_24_04.sqsh https://rootfs.fex-emu.gg/Ubuntu_24_04/2025-12-27/Ubuntu_24_04.sqsh
+RUN wget -O Ubuntu_26_04.sqsh https://www.dropbox.com/scl/fi/gsssfuavp8tfslotx13ln/Ubuntu_26_04.sqsh?rlkey=teqkj6bwvaza85skagaff1wyf
 
-RUN unsquashfs -f -d ./Ubuntu_24_04 Ubuntu_24_04.sqsh
+RUN unsquashfs -f -d ./Ubuntu_26_04 Ubuntu_26_04.sqsh
 
-RUN rm ./Ubuntu_24_04.sqsh
+RUN rm ./Ubuntu_26_04.sqsh
 
 WORKDIR /home/steam/.fex-emu
 
-RUN echo '{"Config":{"RootFS":"Ubuntu_24_04"}}' > ./Config.json
+RUN echo '{"Config":{"RootFS":"Ubuntu_26_04"}}' > ./Config.json
 
 WORKDIR /home/steam/Steam
 
