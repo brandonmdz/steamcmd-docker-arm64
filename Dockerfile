@@ -72,7 +72,7 @@ WORKDIR /home/steam/.fex-emu/RootFS/
 
 # Set up rootfs
 
-RUN wget -O Ubuntu_26_04.sqsh https://www.dropbox.com/scl/fi/gsssfuavp8tfslotx13ln/Ubuntu_26_04.sqsh?rlkey=teqkj6bwvaza85skagaff1wyf
+RUN wget -O Ubuntu_26_04.sqsh https://www.dropbox.com/scl/fi/1hh1ixtxxvgywovk8uc72/Ubuntu_26_04.sqsh?rlkey=c9g7j139qsffht32zhnphmh4i
 
 RUN unsquashfs -f -d ./Ubuntu_26_04 Ubuntu_26_04.sqsh
 
